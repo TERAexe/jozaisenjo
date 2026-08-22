@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>常在戦場｜国家運営申請</title>
+<style>
+:root{--bg:#0f0f13;--panel:#17171d;--panel2:#1d1d25;--line:#2d2d37;--text:#f1f1f3;--muted:#a3a3ad;--accent:#7289da;--danger:#d45d68;--ok:#55b878}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:10;background:rgba(15,15,19,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1100px;margin:auto;padding:0 16px}.head{padding:14px 0}.title{font-weight:800;font-size:22px}.subtitle{font-size:12px;color:var(--muted);margin-top:3px}
+nav{display:flex;gap:7px;overflow:auto;padding:9px 0 4px}button,.btn{font:inherit;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 13px;border-radius:9px;cursor:pointer;white-space:nowrap;touch-action:manipulation;min-height:42px}nav button.active,.primary{background:var(--accent)!important;border-color:var(--accent)!important;color:#fff}
+button:active,.btn:active{transform:scale(.98)}button:focus-visible,input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:2px}
+main{padding:22px 0 65px}.hero{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:21px;margin-bottom:17px}.hero h1{margin:0 0 6px;font-size:28px}.hero p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:11px}.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px}.card h3{margin:0 0 7px;font-size:16px}.card p{color:var(--muted);font-size:13px;line-height:1.55;margin:0 0 13px}
+.section{display:none}.section.active{display:block}.form{max-width:820px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}.form label{display:block;color:var(--muted);font-size:13px;margin:13px 0 6px}.form input,.form textarea,.form select{width:100%;border:1px solid var(--line);background:#101016;color:var(--text);padding:11px;border-radius:8px;font:inherit}.form textarea{min-height:150px}
+.field-help{font-size:12px;color:var(--muted);margin-top:5px}.required{color:#ef8d98}.pill{display:inline-block;border-radius:999px;padding:4px 8px;background:#2a2a34;color:#c6c6d0;font-size:11px}.pill.ok{background:#173c27;color:#a8e4bb}.pill.bad{background:#3d1c21;color:#f0aeb5}
+.item{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px;margin:10px 0}.item h3{margin:7px 0}.meta{color:var(--muted);font-size:12px}.content{white-space:pre-wrap;line-height:1.6;margin-top:12px}.empty{color:var(--muted);padding:25px 0}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.danger{background:var(--danger)!important;border-color:var(--danger)!important}.okbtn{background:var(--ok)!important;border-color:var(--ok)!important;color:#07150c}
+.admin{background:#121218;border:1px solid #454553}.notice{padding:11px;border-radius:9px;background:#151f34;border:1px solid #293b61;color:#c9d6f4;margin:10px 0}.error{color:#ff9da7;font-size:13px;margin-top:8px}.userbar{font-size:12px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.topline{display:flex;align-items:center;gap:10px}
+@media(max-width:700px){.wrap{padding:0 12px}.title{font-size:20px}.topline{align-items:flex-start}.userbar{font-size:11px}.grid{grid-template-columns:1fr}.card{padding:15px}.hero{padding:18px}.hero h1{font-size:24px}.form input,.form textarea,.form select{font-size:16px;min-height:44px}.form textarea{min-height:190px}.toolbar{display:grid;grid-template-columns:1fr}.toolbar>*{width:100%}nav button{min-height:44px}table{display:block;overflow-x:auto;white-space:nowrap}}
+</style>
+
+<style>
+.admin-card-toggle{cursor:pointer}
+.admin-card-toggle:hover{opacity:.92}
+.notice-list .item{margin-bottom:8px}
+.unread{font-weight:700}
+.reply.reply2{margin-left:28px}
+</style>
+<style>
+.admin-open-btn{margin:8px 0 12px;min-width:130px}
+.admin .item{cursor:default}
+</style><style>
+.admin-open-btn{display:inline-block!important;cursor:pointer!important;position:relative;z-index:20;padding:9px 14px;margin:8px 0 12px}
+.admin-open-btn:hover{filter:brightness(.95)}
+.admin [id]{position:relative;z-index:1}
+</style><style>.profile-card{padding:0;overflow:hidden}.profile-header{height:150px;background-size:cover;background-position:center;border-bottom:1px solid var(--line)}.profile-main{display:flex;align-items:center;gap:14px;padding:0 18px;margin-top:-34px}.profile-icon{width:76px;height:76px;border-radius:50%;object-fit:cover;border:4px solid var(--panel);background:#222}.profile-main h3{margin:34px 0 3px}@media(max-width:700px){.profile-header{height:120px}.profile-icon{width:68px;height:68px}}</style>
+<style>
+.profile-card{max-width:820px;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.profile-header{height:180px;background:#252531 center/cover no-repeat;position:relative}
+.profile-avatar{position:absolute;left:18px;bottom:-42px;width:86px;height:86px;border-radius:50%;border:4px solid var(--panel);object-fit:cover;background:#333}
+.profile-body{padding:52px 18px 18px}
+.profile-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.small-muted{font-size:12px;color:var(--muted)}
+.friend-row,.dm-row,.memo-row{display:flex;gap:10px;align-items:center;justify-content:space-between;border:1px solid var(--line);background:var(--panel);padding:12px;border-radius:10px;margin:8px 0}
+.avatar-mini{width:38px;height:38px;border-radius:50%;object-fit:cover;background:#333}
+.dm-box{max-width:820px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.dm-messages{height:360px;overflow:auto;background:#101016;border:1px solid var(--line);border-radius:10px;padding:10px}
+.dm-msg{margin:7px 0;padding:8px 10px;border-radius:10px;background:#1d1d25;max-width:82%}
+.dm-msg.me{margin-left:auto;background:#2b3965}
+#profileModal{position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;z-index:100;align-items:center;justify-content:center;padding:14px}
+#profileModal .profile-card{max-height:92vh;overflow:auto;width:min(820px,100%)}
+.badge{font-size:11px;padding:3px 7px;border-radius:999px;background:#2a2a34}
+.notice-dot{display:inline-block;width:7px;height:7px;background:#d45d68;border-radius:50%;margin-left:5px}
+@media(max-width:700px){.profile-header{height:135px}.dm-messages{height:300px}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap head">
+<div class="topline"><div><div class="title">⚔ 常在戦場</div><div class="subtitle">世界版・国家運営申請システム</div></div><div class="userbar" id="userbar"></div></div>
+<nav>
+<button class="active" data-page="home">申請</button>
+<button data-page="new">申請する</button>
+<button data-page="mine">自分の申請</button>
+<button data-page="account">アカウント</button>
+<button data-page="rules">ルール</button>
+<button data-page="friends">フレンド</button>
+<button data-page="dm">DM</button>
+<button data-page="memo">メモ</button>
+<button data-page="board">掲示板</button><button data-page="notifications">通知</button><button data-page="admin">運営</button>
+</nav>
+</div>
+</header>
+
+<main class="wrap">
+
+<div class="card" style="margin-bottom:14px">
+<h3>📅 サーバー日付</h3>
+<div id="serverDateDisplay" style="font-size:22px;font-weight:800">----</div>
+<div class="small-muted">現実1日あたり何日進めるかを設定できます。リセットされても再設定可能です。</div>
+</div>
+<section id="home" class="section active">
+<div class="hero"><h1>申請</h1><p>申請する項目を選択してください。</p></div>
+<div class="grid" id="categoryGrid"></div>
+</section>
+
+<section id="new" class="section">
+<h2>📝 申請</h2>
+<div id="loginNotice" class="notice">申請するにはアカウントへのログインが必要です。</div>
+<div class="form" id="applicationForm">
+<label>申請種類</label><select id="type"></select>
+<div id="dynamicFields"></div>
+<div style="margin-top:15px"><button type="button" class="btn primary" onclick="submitApp()">申請する</button></div>
+<div id="submitError" class="error"></div>
+</div>
+</section>
+
+<section id="mine" class="section">
+<h2>📋 自分の申請</h2>
+<div class="notice">ここに表示されるのは、現在ログインしているアカウントが提出した申請だけです。</div>
+<div id="mineApps"></div>
+</section>
+
+<section id="account" class="section">
+<div id="accountLoggedOut">
+<h2>👤 アカウント</h2>
+<div class="form">
+<h3>ログイン</h3>
+<label>ユーザー名</label><input id="loginUser" autocomplete="username">
+<label>パスワード</label><input id="loginPass" type="password" autocomplete="current-password">
+<button type="button" class="btn primary" style="margin-top:12px" onclick="login()">ログイン</button>
+<div id="loginError" class="error"></div>
+<hr style="border-color:var(--line);margin:25px 0">
+<h3>アカウント作成申請</h3>
+<div class="notice">⚠ ユーザー名はDiscordで使用している名前を記入してください。Discord IDも必須です。アカウントは運営の承認後に使用できます。許可なしの複数アカウント作成は禁止です。</div>
+<label>Discordユーザー名 <span class="required">*必須</span></label><input id="regUser" autocomplete="username" placeholder="Discordで使用している名前">
+<label>Discord ID <span class="required">*必須</span></label><input id="regDiscordId" placeholder="例：123456789012345678">
+<label>パスワード <span class="required">*必須</span></label><input id="regPass" type="password" autocomplete="new-password">
+<label>パスワード（確認） <span class="required">*必須</span></label><input id="regPass2" type="password" autocomplete="new-password">
+<button type="button" class="btn" style="margin-top:12px" onclick="register()">アカウント作成申請を送る</button>
+<div id="regError" class="error"></div>
+</div>
+</div>
+<div id="accountLoggedIn" style="display:none">
+<h2>👤 アカウント</h2>
+<div class="card profile-card"><div id="profileHeader" class="profile-header"></div><div class="profile-main"><img id="profileIcon" class="profile-icon" alt="アイコン"><div><h3 id="accountName"></h3><div id="profileDiscord" class="meta"></div></div></div><p id="profileBioView" class="content" style="padding:0 18px"></p><button type="button" class="btn" onclick="logout()" style="margin:0 18px 18px">ログアウト</button></div>
+<div class="form" style="margin-top:15px"><h3>プロフィール設定</h3><label>表示名</label><input id="profileDisplayName" maxlength="40"><label>自己紹介</label><textarea id="profileBio" maxlength="300"></textarea><label>ヘッダー画像</label><input id="profileHeaderFile" type="file" accept="image/*"><label>アイコン画像</label><input id="profileIconFile" type="file" accept="image/*"><div class="field-help">画像はそれぞれ2MB以下です。</div><button type="button" class="btn primary" style="margin-top:12px" onclick="saveProfile()">プロフィールを保存</button><div id="profileError" class="error"></div></div>
+</div>
+</section>
+
+
+
+<section id="notifications" class="section">
+<h2>🔔 通知</h2>
+<div id="notificationLoginNotice" class="notice">通知を見るにはログインしてください。</div>
+<div id="notificationArea" style="display:none">
+<div class="toolbar">
+<button type="button" class="btn" onclick="markNotificationsRead()">すべて既読</button>
+<label style="display:inline-flex;align-items:center;gap:8px;margin-left:10px">
+<input type="checkbox" id="notificationEnabled" onchange="toggleNotificationSetting(this.checked)">
+通知を受け取る
+</label>
+</div>
+<div id="notificationList" class="notice-list"></div>
+</div>
+</section>
+
+<section id="board" class="section">
+<h2>💬 掲示板</h2>
+<div id="boardLoginNotice" class="notice">掲示板を利用するにはログインしてください。</div>
+<div id="boardArea" style="display:none">
+<div class="form" style="max-width:820px;margin-bottom:15px">
+<label>投稿内容 <span class="required">*必須</span></label>
+<textarea id="boardText" placeholder="メッセージを入力（@ユーザー名 でメンション）"></textarea>
+<input type="file" id="boardImage" accept="image/*" style="margin-top:10px">
+<button type="button" class="btn primary" style="margin-top:10px" onclick="postBoard()">投稿する</button>
+<div id="boardError" class="error"></div>
+</div>
+<div id="boardPosts"></div>
+</div>
+</section>
+
+
+<section id="friends" class="section">
+<h2>🤝 フレンド</h2>
+<div id="friendsNotice" class="notice">フレンド機能を使うにはログインしてください。</div>
+<div id="friendsArea" style="display:none">
+<div class="form">
+<label>ユーザーID / ユーザー名</label>
+<input id="friendTarget" placeholder="ユーザー名を入力">
+<button class="btn primary" type="button" style="margin-top:10px" onclick="sendFriendRequest()">フレンド申請</button>
+<div id="friendError" class="error"></div>
+</div>
+<h3>申請</h3><div id="friendRequests"></div>
+<h3>フレンド</h3><div id="friendList"></div>
+</div>
+</section>
+
+<section id="dm" class="section">
+<h2>✉ DM</h2>
+<div id="dmNotice" class="notice">DMを使うにはログインしてください。</div>
+<div id="dmArea" style="display:none">
+<div class="form">
+<label>相手のユーザー名</label><input id="dmTarget" placeholder="ユーザー名">
+<button class="btn" type="button" style="margin-top:10px" onclick="openDM()">DMを開く</button>
+</div>
+<div id="dmBox" style="display:none" class="dm-box">
+<h3 id="dmTitle"></h3>
+<div id="dmMessages" class="dm-messages"></div>
+<textarea id="dmText" placeholder="メッセージを入力" style="width:100%;margin-top:10px;min-height:80px;background:#101016;color:white;border:1px solid var(--line);border-radius:8px;padding:9px"></textarea>
+<button class="btn primary" type="button" style="margin-top:8px" onclick="sendDM()">送信</button>
+</div>
+</div>
+</section>
+
+<section id="memo" class="section">
+<h2>🗒 メモ</h2>
+<div id="memoNotice" class="notice">メモを使うにはログインしてください。</div>
+<div id="memoArea" style="display:none">
+<div class="form">
+<label>メモ</label><textarea id="memoText" placeholder="自分用のメモ"></textarea>
+<button class="btn primary" type="button" style="margin-top:10px" onclick="saveMemo()">保存</button>
+</div>
+<div id="memoList"></div>
+</div>
+</section>
+
+<div id="profileModal" onclick="if(event.target===this)closeProfile()">
+  <div class="profile-card">
+    <div class="profile-header" id="profileHeader">
+      <img class="profile-avatar" id="profileAvatar" src="" alt="">
+    </div>
+    <div class="profile-body">
+      <h2 id="profileName" style="margin:0"></h2>
+      <div class="small-muted" id="profileDiscord"></div>
+      <p id="profileBio" class="content"></p>
+      <div class="profile-actions" id="profileActions"></div>
+      <button class="btn" type="button" onclick="closeProfile()">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<section id="rules" class="section">
+<h2>📜 申請について</h2>
+<div class="card"><p>申請内容は運営が確認し、審査待ち・審査中・承認・修正要求・却下のいずれかに更新します。</p><p>申請結果は提出した本人の「自分の申請」から確認できます。運営は運営画面から全申請を確認できます。</p></div><div class="form" style="margin-top:15px"><h3>⚖ 異議申し立て</h3><label>対象</label><input id="appealTarget" placeholder="申請ID・申請名など"><label>内容</label><textarea id="appealReason"></textarea><button type="button" class="btn primary" style="margin-top:12px" onclick="submitAppeal()">送信</button><div id="appealError" class="error"></div></div><div class="card" style="margin-top:15px"><h3>自分の異議申し立て</h3><div id="myAppeals"></div></div>
+</section>
+
+<section id="admin" class="section">
+<div id="adminLogin" class="form" style="max-width:470px;margin:35px auto">
+<h2>🔒 運営限定</h2><p class="field-help">運営のみ全申請を確認・処理できます。</p>
+<label>運営パスワード</label><input id="adminPass" type="password">
+<button type="button" class="btn primary" style="margin-top:12px" onclick="adminLogin()">ログイン</button>
+<div id="adminError" class="error"></div>
+</div>
+<div id="adminPanel" style="display:none">
+<div class="hero admin"><h2 style="margin:0">運営管理</h2><p>全ユーザーの申請を確認し、結果を変更できます。</p><div class="card admin" style="margin:0 0 15px">
+<h3>📅 サーバー日付設定</h3>
+<p class="field-help">運営限定。サーバー内の日付・時刻と、現実1日あたりの進行日数を自由に変更できます。</p>
+<div class="grid">
+<div>
+<label>サーバー日付</label><input id="adminGameDate" type="date">
+</div>
+<div>
+<label>サーバー時刻</label><input id="adminGameTime" type="time" step="1">
+</div>
+<div>
+<label>現実1日あたりの進行日数</label><input id="adminDaysPerDay" type="number" min="0" step="0.1" placeholder="14">
+</div>
+</div>
+<div class="toolbar">
+<button type="button" class="btn primary" onclick="saveServerClockAdmin()">日付設定を保存</button>
+<button type="button" class="btn" onclick="resetServerClockNow()">現在時刻に合わせる</button>
+</div>
+<div id="adminClockError" class="error"></div>
+</div>
+<div class="field-help">アカウントは原則1人1つ。追加アカウントは運営の許可後に作成してください。</div></div>
+<div class="card admin" style="margin-bottom:15px">
+<h3>📝 掲示板削除ログ</h3>
+<button type="button" class="btn admin-open-btn" onclick="toggleAdminList('adminBoardLogs', this)">▼ 一覧を表示</button><p class="field-help">削除された掲示板投稿の記録を確認できます。</p>
+<div id="adminBoardLogs" style="display:none" data-open="0"></div>
+</div>
+<div class="card admin" style="margin-bottom:15px">
+<h3>⚖ 異議申し立て</h3>
+<button type="button" class="btn admin-open-btn" onclick="toggleAdminList('adminAppeals', this)">▼ 一覧を表示</button>
+<div id="adminAppeals" style="display:none" data-open="0"></div>
+</div>
+<div class="card admin" style="margin-bottom:15px">
+<h3>📋 全申請</h3>
+<button type="button" class="btn admin-open-btn" onclick="toggleAdminList('allApplications', this)">▼ 一覧を表示</button><p class="field-help">クリックすると全申請の一覧を表示します。</p>
+<div id="allApplications" style="display:none" data-open="0"></div>
+</div>
+<div class="card admin" style="margin-bottom:15px">
+<h3>👤 アカウント作成申請</h3><button type="button" class="btn admin-open-btn" onclick="toggleAdminList('accountRequests',this)">▼ 一覧を表示</button>
+<p class="field-help">アカウント作成申請は通常の申請とは別に永久保存されます。承認・却下後も記録を残します。</p>
+<div id="accountRequests" style="display:none" data-open="0"></div>
+</div>
+<div class="card admin" style="margin-bottom:15px">
+<h3>🗑 アカウント削除申請</h3>
+<button type="button" class="btn admin-open-btn" onclick="toggleAdminList('adminDeletionRequests', this)">▼ 一覧を表示</button>
+<div id="adminDeletionRequests" style="display:none" data-open="0"></div>
+</div>
+<div class="card admin" style="margin-bottom:15px">
+<h3>👥 アカウント一覧</h3>
+<button type="button" class="btn admin-open-btn" onclick="toggleAdminList('adminAccounts', this)">▼ 一覧を表示</button><p class="field-help">登録されている全アカウントを表示します。</p>
+<div id="adminAccounts" style="display:none" data-open="0"></div>
+</div>
+<div class="card admin" style="margin-bottom:15px">
+<h3>🚫 利用停止管理</h3>
+<button type="button" class="btn admin-open-btn" onclick="toggleAdminList('banList', this)">▼ 一覧を表示</button>
+<p class="field-help">運営限定。BANされたアカウントはこのサイトへログインできません。</p>
+<div id="banList" style="display:none" data-open="0"></div>
+</div>
+<div class="toolbar">
+<input id="search" oninput="renderAdmin()" placeholder="国家名・申請名・ユーザー名で検索">
+<select id="filter" onchange="renderAdmin()"><option value="">すべて</option><option>審査待ち</option><option>審査中</option><option>承認</option><option>修正要求</option><option>却下</option></select>
+<button type="button" class="btn" onclick="allowAdditionalAccount()">追加アカウント許可</button>
+<button type="button" class="btn" onclick="adminLogout()">ログアウト</button>
+</div>
+<div id="adminApps"></div>
+</div>
+</section>
+</main>
+
+<script>
+const categories=[
+["gdp・人口変更申請","GDP・人口を変更する申請"],
+["陣営申請","陣営への参加・設立など"],
+["領土申請","領土の変更・取得など"],
+["前史申請","国家の前史・歴史設定"],
+["解体申請","国家・組織などの解体申請"],
+["休暇申請","国家運営上の休暇申請"]
+];
+
+const schemas={
+"gdp・人口変更申請":[
+["国家名","text","変更対象の国家名","必須"],["現在のGDP","text","現在のGDP","必須"],["変更後のGDP","text","変更後のGDP","必須"],
+["現在の人口","text","現在の人口","必須"],["変更後の人口","text","変更後の人口","必須"],["変更理由","textarea","根拠や理由","必須"]],
+"陣営申請":[["国家名","text","参加・設立する国家","必須"],["陣営名","text","陣営名","必須"],["参加国・加盟国","textarea","加盟国を記入","必須"],["目的・内容","textarea","陣営の目的や活動内容","必須"]],
+"領土申請":[["国家名","text","国家名","必須"],["対象地域","textarea","取得・変更する地域","必須"],["現在の保有国","text","現在の保有国","必須"],["希望する変更","textarea","何を変更するか","必須"],["根拠・理由","textarea","理由や根拠","必須"],["証拠画像","file","領土の位置・根拠などを示す画像（任意）","任意"]],
+"前史申請":[["国家名","text","国家名","必須"],["年代・期間","text","対象年代","必須"],["前史内容","textarea","歴史設定","必須"],["根拠・備考","textarea","補足","任意"]],
+"解体申請":[["申請国家・組織","text","解体する国家・組織","必須"],["対象","textarea","解体対象の詳細","必須"],["解体理由","textarea","解体する理由","必須"],["解体後の処理","textarea","領土・資産・所属などの扱い","必須"]],
+"休暇申請":[["国家名","text","国家名","必須"],["休暇期間","text","開始日～終了日","必須"],["休暇理由","textarea","理由","必須"],["期間中の扱い","textarea","代理対応など","任意"]]
+};
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+function getUsers(){return JSON.parse(localStorage.getItem("jz_users")||"[]")}
+function saveUsers(x){localStorage.setItem("jz_users",JSON.stringify(x))}
+function getApps(){return JSON.parse(localStorage.getItem("jz_apps")||"[]")}
+function saveApps(x){localStorage.setItem("jz_apps",JSON.stringify(x))}
+function currentUser(){return sessionStorage.getItem("jz_user")}
+function isAdmin(){return sessionStorage.getItem("jz_admin")==="1"}
+
+const grid=$("categoryGrid"), type=$("type");
+categories.forEach(([n,d])=>{
+ const c=document.createElement("div");c.className="card";
+ const h=document.createElement("h3");h.textContent=n;
+ const p=document.createElement("p");p.textContent=d;
+ const b=document.createElement("button");b.type="button";b.className="btn primary";b.textContent="申請する";b.onclick=()=>openType(n);
+ c.append(h,p,b);grid.appendChild(c);
+ const o=document.createElement("option");o.value=n;o.textContent=n;type.appendChild(o);
+});
+function show(id){
+ document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));
+ $(id).classList.add("active");
+ document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===id));
+ if(id==="mine")renderMine();
+ if(id==="board")renderBoard();
+ if(id==="notifications"){renderNotifications();renderAppeals();}
+ if(id==="account")renderAccount();
+ if(id==="admin"&&isAdmin()){showAdminPanel();renderAdmin();}
+ window.scrollTo(0,0);
+}
+document.querySelectorAll("nav button").forEach(b=>{b.type="button";b.onclick=()=>show(b.dataset.page)});
+
+function openType(n){type.value=n;renderFields();show("new");setTimeout(()=>document.querySelector("#dynamicFields input,#dynamicFields textarea")?.focus(),80)}
+type.onchange=renderFields;
+
+function renderFields(){
+ const list=schemas[type.value]||[],box=$("dynamicFields");
+ box.innerHTML="";
+ list.forEach(([label,kind,ph,req],i)=>{
+   const l=document.createElement("label");l.innerHTML=esc(label)+" "+(req==="必須"?'<span class="required">*必須</span>':'');
+   const el=document.createElement(kind==="textarea"?"textarea":"input");
+   el.id="f"+i;el.placeholder=ph;el.dataset.label=label;el.dataset.required=req;
+   if(kind==="text")el.type="text";
+   if(kind==="file"){el.type="file";el.accept="image/*";}
+   box.append(l,el);
+   const h=document.createElement("div");h.className="field-help";h.textContent=ph;box.appendChild(h);
+ });
+}
+renderFields();
+
+function register(){
+ const u=$("regUser").value.trim(),did=$("regDiscordId").value.trim(),p=$("regPass").value,p2=$("regPass2").value,err=$("regError");
+ err.textContent="";
+ if(localStorage.getItem("jz_account_created")==="1"){err.textContent="この端末では既にアカウント作成申請を行っています。追加アカウントは運営の許可が必要です。";return}
+ if(!u){err.textContent="Discordユーザー名を入力してください。";return}
+ if(!/^\d{17,20}$/.test(did)){err.textContent="Discord IDは17～20桁の数字で入力してください。";return}
+ if(p.length<6){err.textContent="パスワードは6文字以上にしてください。";return}
+ if(p!==p2){err.textContent="パスワードが一致しません。";return}
+ const users=getUsers();
+ if(users.some(x=>x.discordId===did)){err.textContent="そのDiscord IDは既に登録されています。";return}
+ const reqs=getAccountRequests();
+ if(reqs.some(x=>x.discordId===did&&x.status!=="却下")){err.textContent="そのDiscord IDの申請は既に存在します。";return}
+ reqs.push({id:Date.now(),discordName:u,discordId:did,password:p,status:"審査待ち",date:new Date().toLocaleString("ja-JP")});
+ saveAccountRequests(reqs);
+ localStorage.setItem("jz_account_created","1");
+ alert("アカウント作成申請を送信しました。運営の承認をお待ちください。");
+ $("regUser").value="";$("regDiscordId").value="";$("regPass").value="";$("regPass2").value="";
+}
+
+function login(){
+ const u=$("loginUser").value.trim(),p=$("loginPass").value,err=$("loginError");
+ const user=getUsers().find(x=>x.username===u&&x.password===p);
+ if(!user){err.textContent="ユーザー名またはパスワードが違います。";return}
+ const ban=getBans().find(x=>x.username===u);
+ if(ban){err.textContent="このアカウントはBANされています。運営へ確認してください。";return}
+ err.textContent="";sessionStorage.setItem("jz_user",u);renderAccount();updateUserbar();alert("ログインしました。");
+}
+function logout(){sessionStorage.removeItem("jz_user");renderAccount();updateUserbar();show("home")}
+function renderAccount(){
+ const u=currentUser();
+ $("accountLoggedOut").style.display=u?"none":"block";$("accountLoggedIn").style.display=u?"block":"none";
+ if(u)$("accountName").textContent="ログイン中：@"+u;
+}
+function updateUserbar(){$("userbar").textContent=currentUser()?"@"+currentUser():"未ログイン"}
+updateUserbar();renderAccount();
+
+async function submitApp(){
+ $("submitError").textContent=""; const u=currentUser();
+ if(!u){$("submitError").textContent="先にアカウントへログインしてください。";return}
+ const fields=schemas[type.value]||[],data={};
+ try{for(let i=0;i<fields.length;i++){const [label,kind,,req]=fields[i],el=$("f"+i);let v=kind==="file"?await readImage(el.files?.[0]):el.value.trim();data[label]=v;if(req==="必須"&&!v)throw new Error("必須項目をすべて入力してください。");}
+ const apps=getApps();apps.unshift({id:Date.now(),user:u,type:type.value,data,status:"審査待ち",date:new Date().toLocaleString("ja-JP")});saveApps(apps);notifyUser(u,"申請","申請受付","「"+type.value+"」を受け付けました。");alert("申請を受け付けました。結果は「自分の申請」で確認できます。");show("mine");}
+ catch(e){$("submitError").textContent=e.message||"申請に失敗しました。";}
+}
+
+
+
+
+function getBoard(){return JSON.parse(localStorage.getItem("jz_board")||"[]")}
+function saveBoard(x){localStorage.setItem("jz_board",JSON.stringify(x))}
+function renderReplyTree(replies,depth=0){
+ return (replies||[]).map(r=>{
+   const children=r.replies||[];
+   return `<div class="item reply ${depth>0?'reply2':''}">
+     <b>@${esc(r.user)}</b><span class="meta">　${esc(r.date)}</span>
+     <div class="content">${esc(r.text)}</div>
+     <div class="toolbar">
+       <button type="button" class="btn" onclick="toggleNestedReply('${r.id}')">↩ 返信</button>
+       <button type="button" class="btn" onclick="reactReply('${r.id}','good')">👍 ${(r.likes||[]).length}</button>
+       <button type="button" class="btn" onclick="reactReply('${r.id}','bad')">👎 ${(r.dislikes||[]).length}</button>
+     </div>
+     <div id="nested-reply-box-${r.id}" style="display:none;margin-top:8px">
+       <textarea id="nested-reply-${r.id}" placeholder="返信を入力"></textarea>
+       <button type="button" class="btn primary" onclick="replyToReply('${r.id}')">返信する</button>
+     </div>
+     ${renderReplyTree(children,depth+1)}
+   </div>`;
+ }).join("");
+}
+function renderBoard(){
+ const logged=!!currentUser(), area=$("boardArea"), notice=$("boardLoginNotice");
+ if(!area)return;
+ area.style.display=logged?"block":"none";notice.style.display=logged?"none":"block";
+ if(!logged)return;
+ const posts=getBoard(),me=currentUser();
+ $("boardPosts").innerHTML=posts.length?posts.map(p=>`
+ <div class="item" id="post-${p.id}">
+  <b>@${esc(p.user)}</b><span class="meta">　${esc(p.date)}</span>
+  <div class="content">${esc(p.text)}${p.image?`<div style="margin-top:8px"><img src="${p.image}" alt="投稿画像" style="max-width:100%;max-height:500px;border-radius:8px"></div>`:""}</div>
+  <div class="toolbar">
+   <button type="button" class="btn" onclick="reactBoard(${p.id},'good')">👍 ${(p.likes||[]).length}</button>
+   <button type="button" class="btn" onclick="reactBoard(${p.id},'bad')">👎 ${(p.dislikes||[]).length}</button>
+   <button type="button" class="btn" onclick="toggleReply(${p.id})">↩ 返信</button>
+   ${p.user===me?`<button type="button" class="btn danger" onclick="deleteBoardPost(${p.id})">🗑 削除</button>`:""}
+  </div>
+  <div id="reply-box-${p.id}" style="display:none;margin-top:10px">
+   <textarea id="reply-${p.id}" placeholder="返信を入力"></textarea>
+   <button type="button" class="btn primary" onclick="replyBoard(${p.id})">返信する</button>
+  </div>
+  ${renderReplyTree(p.replies)}
+ </div>`).join(""):"<div class='empty'>まだ投稿はありません。</div>";
+}
+
+function extractMentions(text){
+ const out=[];const re=/@([A-Za-z0-9_\-ぁ-んァ-ヶ一-龯]+)/g;let m;
+ while((m=re.exec(text))){if(!out.includes(m[1]))out.push(m[1])}
+ return out;
+}
+function notifyMentions(text,author){
+ extractMentions(text).forEach(user=>{
+   if(user!==author)notifyUser(user,"掲示板","メンション","掲示板であなたがメンションされました。");
+ });
+}
+function readImage(file){
+ return new Promise((resolve,reject)=>{
+  if(!file){resolve(null);return}
+  if(file.size>2*1024*1024){reject(new Error("画像は2MB以下にしてください。"));return}
+  const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);
+ });
+}
+
+
+async function postBoard(){
+ const u=currentUser(),text=$("boardText").value.trim(),file=$("boardImage")?.files?.[0];
+ if(!u){show("account");return}
+ if(!text&&!file){$("boardError").textContent="文章または画像を入力してください。";return}
+ try{
+  const image=await readImage(file);
+  const posts=getBoard();
+  posts.push({id:Date.now(),user:u,text,image,date:new Date().toLocaleString("ja-JP"),likes:[],dislikes:[],replies:[]});
+  saveBoard(posts);notifyMentions(text,u);
+  $("boardText").value="";if($("boardImage"))$("boardImage").value="";$("boardError").textContent="";renderBoard();
+ }catch(e){$("boardError").textContent=e.message||"画像の投稿に失敗しました。";}
+}
+
+
+function getBoardLogs(){return JSON.parse(localStorage.getItem("jz_board_logs")||"[]")}
+function saveBoardLogs(x){localStorage.setItem("jz_board_logs",JSON.stringify(x))}
+function deleteBoardPost(id){
+ const u=currentUser();if(!u)return;
+ const posts=getBoard(),idx=posts.findIndex(p=>p.id===id);
+ if(idx<0||posts[idx].user!==u){alert("自分が投稿した内容のみ削除できます。");return}
+ const p=posts[idx];
+ if(!confirm("この投稿を削除しますか？"))return;
+ const logs=getBoardLogs();
+ logs.push({id:Date.now(),action:"削除",postId:id,user:u,text:p.text,image:!!p.image,date:new Date().toLocaleString("ja-JP")});
+ saveBoardLogs(logs);
+ posts.splice(idx,1);saveBoard(posts);renderBoard();
+}
+function renderAdminBoardLogs(){
+ if(!isAdmin())return;const box=$("adminBoardLogs");if(!box)return;
+ const logs=getBoardLogs().sort((a,b)=>b.id-a.id);
+ box.innerHTML=logs.length?logs.map(x=>`<div class="item">
+ <b>掲示板投稿削除</b><div class="meta">@${esc(x.user)} ｜ ${esc(x.date)} ｜ 投稿ID:${esc(x.postId)}</div>
+ <div class="content">${esc(x.text||"(画像投稿)")}</div>
+ </div>`).join(""):"<div class='empty'>削除ログはありません。</div>";
+}
+function reactBoard(id,type){
+ const u=currentUser();if(!u)return;
+ const posts=getBoard(),p=posts.find(x=>x.id===id);if(!p)return;
+ p.likes=p.likes||[];p.dislikes=p.dislikes||[];
+ p.likes=p.likes.filter(x=>x!==u);p.dislikes=p.dislikes.filter(x=>x!==u);
+ const arr=type==="good"?p.likes:p.dislikes;arr.push(u);
+ if(p.user!==u)notifyUser(p.user,"掲示板","掲示板への反応","あなたの投稿に"+(type==="good"?"👍グッド":"👎バッド")+"が付きました。");
+ saveBoard(posts);renderBoard();
+}
+function toggleReply(id){const x=$("reply-box-"+id);if(x)x.style.display=x.style.display==="none"?"block":"none"}
+function replyBoard(id){
+ const u=currentUser(),box=$("reply-"+id);if(!u||!box)return;
+ const text=box.value.trim();if(!text)return;
+ const posts=getBoard(),p=posts.find(x=>x.id===id);if(!p)return;
+ p.replies=p.replies||[];
+ p.replies.push({id:String(Date.now()),user:u,text,date:new Date().toLocaleString("ja-JP"),likes:[],dislikes:[],replies:[]});
+ if(p.user!==u)notifyUser(p.user,"掲示板","投稿への返信","あなたの投稿に返信がありました。");notifyMentions(text,u);
+ saveBoard(posts);renderBoard();
+}
+function findReply(replies,id){
+ for(const r of (replies||[])){if(String(r.id)===String(id))return r;const f=findReply(r.replies,id);if(f)return f}
+ return null;
+}
+function toggleNestedReply(id){const x=$("nested-reply-box-"+id);if(x)x.style.display=x.style.display==="none"?"block":"none"}
+function replyToReply(parentId){
+ const u=currentUser(),box=$("nested-reply-"+parentId);if(!u||!box)return;
+ const text=box.value.trim();if(!text)return;
+ const posts=getBoard();
+ let parent=null;
+ for(const p of posts){parent=findReply(p.replies,parentId);if(parent)break}
+ if(!parent)return;
+ parent.replies=parent.replies||[];
+ parent.replies.push({id:String(Date.now()),user:u,text,date:new Date().toLocaleString("ja-JP"),likes:[],dislikes:[],replies:[]});
+ if(parent.user!==u)notifyUser(parent.user,"掲示板","返信への返信","あなたの返信にさらに返信がありました。");notifyMentions(text,u);
+ saveBoard(posts);renderBoard();
+}
+function reactReply(id,type){
+ const u=currentUser();if(!u)return;
+ const posts=getBoard();let r=null;
+ for(const p of posts){r=findReply(p.replies,id);if(r)break}
+ if(!r)return;
+ r.likes=r.likes||[];r.dislikes=r.dislikes||[];
+ r.likes=r.likes.filter(x=>x!==u);r.dislikes=r.dislikes.filter(x=>x!==u);
+ (type==="good"?r.likes:r.dislikes).push(u);
+ if(r.user!==u)notifyUser(r.user,"掲示板","返信への反応","あなたの返信に"+(type==="good"?"👍グッド":"👎バッド")+"が付きました。");
+ saveBoard(posts);renderBoard();
+}
+
+
+function getNotifications(){return JSON.parse(localStorage.getItem("jz_notifications")||"[]")}
+function saveNotifications(x){localStorage.setItem("jz_notifications",JSON.stringify(x))}
+function getNotificationSettings(){return JSON.parse(localStorage.getItem("jz_notification_settings")||"{}")}
+function saveNotificationSettings(x){localStorage.setItem("jz_notification_settings",JSON.stringify(x))}
+function notificationEnabled(user){
+ const s=getNotificationSettings();
+ return s[user]!==false;
+}
+function toggleNotificationSetting(v){
+ const u=currentUser();if(!u)return;
+ const s=getNotificationSettings();s[u]=!!v;saveNotificationSettings(s);
+}
+function notifyUser(user,type,title,message){
+ if(!user||!notificationEnabled(user))return;
+ const n=getNotifications();
+ n.push({id:Date.now()+Math.random(),user,type,title,message,date:new Date().toLocaleString("ja-JP"),read:false});
+ saveNotifications(n);
+}
+function renderNotifications(){
+ const logged=!!currentUser(),area=$("notificationArea"),notice=$("notificationLoginNotice");
+ if(!area)return;
+ area.style.display=logged?"block":"none";notice.style.display=logged?"none":"block";
+ if(!logged)return;
+ const chk=$("notificationEnabled");if(chk)chk.checked=notificationEnabled(currentUser());
+ const a=getNotifications().filter(x=>x.user===currentUser()).sort((a,b)=>b.id-a.id);
+ $("notificationList").innerHTML=a.length?a.map(x=>`<div class="item ${x.read?'':'unread'}">
+  <span class="pill">${esc(x.type)}</span> <b>${esc(x.title)}</b>
+  <div class="meta">${esc(x.date)}</div><div class="content">${esc(x.message)}</div>
+ </div>`).join(""):"<div class='empty'>通知はありません。</div>";
+}
+
+function markNotificationsRead(){
+ const u=currentUser();if(!u)return;
+ const a=getNotifications();a.forEach(x=>{if(x.user===u)x.read=true});saveNotifications(a);renderNotifications();
+}
+
+function getAppeals(){return JSON.parse(localStorage.getItem("jz_appeals")||"[]")}
+function saveAppeals(x){localStorage.setItem("jz_appeals",JSON.stringify(x))}
+function submitAppeal(){
+ const u=currentUser();if(!u){show("account");return}
+ const target=$("appealTarget").value.trim(),reason=$("appealReason").value.trim();
+ const err=$("appealError");err.textContent="";
+ if(!target||!reason){err.textContent="対象と異議申し立て内容を入力してください。";return}
+ const a=getAppeals();
+ a.push({id:Date.now(),user:u,target,reason,status:"審査待ち",date:new Date().toLocaleString("ja-JP")});
+ saveAppeals(a);$("appealTarget").value="";$("appealReason").value="";
+ alert("異議申し立てを送信しました。");renderAppeals();
+}
+function renderAppeals(){
+ const u=currentUser(),box=$("myAppeals");if(!box)return;
+ if(!u){box.innerHTML="<div class='empty'>ログインすると異議申し立てを確認できます。</div>";return}
+ const a=getAppeals().filter(x=>x.user===u);
+ box.innerHTML=a.length?a.map(x=>`<div class="item"><b>${esc(x.target)}</b><span class="pill">${esc(x.status)}</span><div class="meta">${esc(x.date)}</div><div class="content">${esc(x.reason)}</div></div>`).join(""):"<div class='empty'>異議申し立てはありません。</div>";
+}
+function renderAdminAppeals(){
+ if(!isAdmin())return;
+ const box=$("adminAppeals");if(!box)return;
+ const a=getAppeals();
+ box.innerHTML=a.length?a.map(x=>`<div class="item">
+ <b>@${esc(x.user)}</b>　<span class="pill">${esc(x.status)}</span>
+ <div class="meta">${esc(x.date)} ｜ 対象：${esc(x.target)}</div>
+ <div class="content">${esc(x.reason)}</div>
+ <div class="toolbar">
+  <button type="button" class="btn okbtn" onclick="setAppealStatus(${x.id},'対応済み')">対応済み</button>
+  <button type="button" class="btn" onclick="setAppealStatus(${x.id},'却下')">却下</button>
+ </div></div>`).join(""):"<div class='empty'>異議申し立てはありません。</div>";
+}
+function setAppealStatus(id,status){
+ const a=getAppeals(),x=a.find(v=>v.id===id);if(!x)return;
+ x.status=status;x.updatedAt=new Date().toLocaleString("ja-JP");saveAppeals(a);renderAdminAppeals();renderAppeals();
+}
+
+function renderMine(){
+ const u=currentUser(),box=$("mineApps");
+ if(!u){box.innerHTML="<div class='empty'>ログインすると自分の申請を確認できます。</div>";return}
+ const apps=getApps().filter(a=>a.user===u);
+ if(!apps.length){box.innerHTML="<div class='empty'>まだ申請はありません。</div>";return}
+ box.innerHTML=apps.map(a=>{
+   const body=Object.entries(a.data).map(([k,v])=>`<b>${esc(k)}</b>：${esc(v)}`).join("<br>");
+   return `<div class="item"><span class="pill">${esc(a.type)}</span> <span class="pill ${a.status==="承認"?"ok":a.status==="却下"?"bad":""}">${esc(a.status)}</span><h3>${esc(a.title||a.type)}</h3><div class="meta">${esc(a.date)}</div><div class="content">${body}</div>${a.adminNote?`<div class="notice"><b>運営からの連絡</b><br>${esc(a.adminNote)}</div>`:""}</div>`;
+ }).join("");
+}
+
+async function saveProfile(){const u=currentUser();if(!u)return;const err=$("profileError");err.textContent="";try{const users=getUsers(),x=users.find(v=>v.username===u);if(!x)throw new Error("アカウントが見つかりません。");x.profile=x.profile||{};x.profile.displayName=$("profileDisplayName").value.trim()||u;x.profile.bio=$("profileBio").value.trim();const hf=$("profileHeaderFile").files?.[0],inf=$("profileIconFile").files?.[0];if(hf)x.profile.header=await readImage(hf);if(inf)x.profile.icon=await readImage(inf);saveUsers(users);renderAccount();alert("プロフィールを保存しました。")}catch(e){err.textContent=e.message||"保存に失敗しました。";}}
+function renderAccount(){const u=currentUser();$("accountLoggedOut").style.display=u?"none":"block";$("accountLoggedIn").style.display=u?"block":"none";if(!u)return;const x=getUsers().find(v=>v.username===u)||{},p=x.profile||{};$("accountName").textContent=p.displayName||("@"+u);$("profileDiscord").textContent="Discord："+(x.discordId||"未登録")+" ／ @"+u;$("profileDisplayName").value=p.displayName||u;$("profileBio").value=p.bio||"";$("profileBioView").textContent=p.bio||"";$("profileIcon").src=p.icon||"data:image/svg+xml;charset=UTF-8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96"><rect width="100%" height="100%" fill="#2a2a34"/><text x="50%" y="58%" text-anchor="middle" fill="white" font-size="36">👤</text></svg>');$("profileHeader").style.backgroundImage=p.header?`url("${p.header}")`:"linear-gradient(120deg,#24283a,#17171d)";}
+
+function adminLogin(){
+ if($("adminPass").value==="jz2026"){sessionStorage.setItem("jz_admin","1");$("adminPass").value="";showAdminPanel();renderAdmin()}
+ else $("adminError").textContent="パスワードが違います。";
+}
+function adminLogout(){sessionStorage.removeItem("jz_admin");$("adminPanel").style.display="none";$("adminLogin").style.display="block"}
+function allowAdditionalAccount(){
+ if(!isAdmin()) return;
+ localStorage.removeItem("jz_account_created");
+ alert("この端末で新しいアカウント作成申請を送れる状態にしました。運営が許可した場合のみ使用してください。");
+}
+function showAdminPanel(){if(!isAdmin())return;$("adminLogin").style.display="none";$("adminPanel").style.display="block"}
+
+function getAccountRequests(){return JSON.parse(localStorage.getItem("jz_account_requests")||"[]")}
+function saveAccountRequests(x){localStorage.setItem("jz_account_requests",JSON.stringify(x))}
+function getBans(){return JSON.parse(localStorage.getItem("jz_bans")||"[]")}
+function saveBans(x){localStorage.setItem("jz_bans",JSON.stringify(x))}
+
+function renderAccountRequests(){
+ if(!isAdmin())return;
+ const box=$("accountRequests"), reqs=getAccountRequests();
+ if(!reqs.length){box.innerHTML="<div class='empty'>アカウント作成申請はありません。</div>";}
+ else box.innerHTML=reqs.map(r=>`
+ <div class="item">
+   <span class="pill">${esc(r.status)}</span>
+   <h3>${esc(r.discordName)}</h3>
+   <div class="meta">Discord ID：${esc(r.discordId)} ｜ 申請日時：${esc(r.date)} ｜ ID:${r.id}</div>
+   <div class="toolbar">
+     <button type="button" class="btn okbtn" onclick="approveAccount(${r.id})">承認</button>
+     <button type="button" class="btn" onclick="rejectAccount(${r.id})">却下</button>
+     <button type="button" class="btn danger" onclick="deleteAccountRequest(${r.id})">永久記録を削除</button>
+   </div>
+ </div>`).join("");
+ renderBanList();
+}
+
+function approveAccount(id){
+ const reqs=getAccountRequests(),r=reqs.find(x=>x.id===id);
+ if(!r)return;
+ const users=getUsers();
+ if(users.some(u=>u.discordId===r.discordId)){alert("このDiscord IDは既に登録されています。");return}
+ users.push({username:r.discordName,password:r.password,discordId:r.discordId,created:new Date().toISOString(),approved:true});
+ saveUsers(users);
+ r.status="承認";r.approvedAt=new Date().toLocaleString("ja-JP");
+ saveAccountRequests(reqs);
+ alert("アカウントを承認しました。申請記録は残ります。");
+ renderAccountRequests();renderAdminAppeals();renderAllApplications();renderAdminAccounts();renderAdminBoardLogs();
+}
+
+function rejectAccount(id){
+ const reqs=getAccountRequests(),r=reqs.find(x=>x.id===id);
+ if(!r)return;
+ r.status="却下";r.rejectedAt=new Date().toLocaleString("ja-JP");
+ saveAccountRequests(reqs);renderAccountRequests();
+}
+
+function deleteAccountRequest(id){
+ if(!confirm("このアカウント申請の永久記録を削除しますか？"))return;
+ saveAccountRequests(getAccountRequests().filter(x=>x.id!==id));
+ renderAccountRequests();
+}
+
+function banUser(username,type){
+ if(!isAdmin())return;
+ const users=getUsers(),u=users.find(x=>x.username===username);
+ if(!u)return;
+ const bans=getBans().filter(b=>b.username!==username);
+ bans.push({username,discordId:u.discordId||"",type,created:new Date().toLocaleString("ja-JP")});
+ saveBans(bans);
+ alert("BANしました。");
+ renderBanList();
+}
+
+function unbanUser(username){
+ saveBans(getBans().filter(b=>b.username!==username));
+ renderBanList();
+}
+
+function renderBanList(){
+ const box=$("banList");
+ if(!box)return;
+ const users=getUsers(),bans=getBans();
+ box.innerHTML=users.length?users.map(u=>{
+   const b=bans.find(x=>x.username===u.username);
+   return `<div class="item">
+     <b>@${esc(u.username)}</b><div class="meta">Discord ID：${esc(u.discordId||"未登録")}</div>
+     <div style="margin-top:9px">
+       ${b?`<span class="pill bad">${esc(b.type)}</span> <span class="meta">${esc(b.created)}</span> <button type="button" class="btn" onclick="unbanUser('${esc(u.username).replace(/'/g,"\\\\'")}')">解除</button>`:
+       `<button type="button" class="btn danger" onclick="banUser('${esc(u.username).replace(/'/g,"\\\\'")}','BAN')">BAN</button>`}
+     </div>
+   </div>`;
+ }).join(""):"<div class='empty'>ユーザーがいません。</div>";
+}
+
+
+function renderAllApplications(){
+ if(!isAdmin())return;
+ const box=$("allApplications");if(!box)return;
+ const apps=getApps();
+ box.innerHTML=apps.length?apps.map(a=>`<div class="item">
+  <b>${esc(a.type||"申請")}</b> <span class="pill">${esc(a.status||"審査待ち")}</span>
+  <div class="meta">申請者：@${esc(a.user||"不明")} ｜ ${esc(a.date||"")}</div>
+  <div class="content">${Object.entries(a.data||{}).map(([k,v])=>`<div><b>${esc(k)}</b>：${typeof v==="string"&&v.startsWith("data:image/")?`<br><img src="${v}" style="max-width:300px;max-height:220px;border-radius:8px">`:esc(v)}</div>`).join("")}</div>
+ </div>`).join(""):"<div class='empty'>申請はありません。</div>";
+}
+
+
+function toggleAdminList(id,btn){
+ const el=document.getElementById(id);
+ if(!el){alert("一覧が見つかりません: "+id);return;}
+ const isHidden=el.getAttribute("data-open")!=="1";
+ if(isHidden){if(id==="adminBoardLogs")renderAdminBoardLogs();if(id==="adminAppeals")renderAdminAppeals();if(id==="allApplications")renderAllApplications();if(id==="accountRequests")renderAccountRequests();if(id==="adminAccounts")renderAdminAccounts();if(id==="banList")renderBanList();}
+ el.setAttribute("data-open",isHidden?"1":"0");
+ el.style.display=isHidden?"block":"none";
+ if(btn)btn.textContent=isHidden?"▲ 一覧を閉じる":"▼ 一覧を表示";
+}
+function renderAdminAccounts(){
+ if(!isAdmin())return;const box=$("adminAccounts");if(!box)return;
+ const users=getUsers();
+ box.innerHTML=users.length?users.map(u=>`<div class="item">
+ <b>@${esc(u.username)}</b><div class="meta">Discord ID：${esc(u.discordId||"未登録")} ｜ 登録：${esc(u.created||"")}</div>
+ </div>`).join(""):"<div class='empty'>アカウントがありません。</div>";
+}
+
+function refreshAdminPanels(){
+ if(!isAdmin())return;
+ try{renderAccountRequests()}catch(e){}
+ try{renderAdminAppeals()}catch(e){}
+ try{renderAllApplications()}catch(e){}
+ try{renderAdminAccounts()}catch(e){}
+ try{renderAdminBoardLogs()}catch(e){}
+}
+
+function renderAdmin(){
+ if(!isAdmin())return;
+ const q=($("search").value||"").toLowerCase(),f=$("filter").value;
+ const apps=getApps().filter(a=>(!f||a.status===f)&&(!q||(a.user+a.type+JSON.stringify(a.data)).toLowerCase().includes(q)));
+ $("adminApps").innerHTML=apps.length?apps.map(a=>{
+  const body=Object.entries(a.data).map(([k,v])=>`<b>${esc(k)}</b>：${esc(v)}`).join("<br>");
+  return `<div class="item"><span class="pill">${esc(a.type)}</span> <span class="pill ${a.status==="承認"?"ok":a.status==="却下"?"bad":""}">${esc(a.status)}</span><h3>${esc(a.type)}</h3><div class="meta">申請者：@${esc(a.user)}　｜　${esc(a.date)}　｜　ID:${a.id}</div><div class="content">${body}</div><label style="display:block;color:var(--muted);font-size:12px;margin-top:12px">運営からの連絡</label><textarea id="note${a.id}" style="width:100%;min-height:75px;background:#101016;color:white;border:1px solid var(--line);border-radius:8px;padding:9px">${esc(a.adminNote||"")}</textarea><div class="toolbar"><select onchange="changeStatus(${a.id},this.value)"><option ${a.status==="審査待ち"?"selected":""}>審査待ち</option><option ${a.status==="審査中"?"selected":""}>審査中</option><option ${a.status==="承認"?"selected":""}>承認</option><option ${a.status==="修正要求"?"selected":""}>修正要求</option><option ${a.status==="却下"?"selected":""}>却下</option></select><button type="button" class="btn primary" onclick="saveNote(${a.id})">連絡を保存</button><button type="button" class="btn danger" onclick="deleteApp(${a.id})">削除</button></div></div>`
+ }).join(""):"<div class='empty'>該当する申請はありません。</div>";
+ renderAccountRequests();
+}
+function changeStatus(id,s){const a=getApps(),x=a.find(v=>v.id===id);if(x){const old=x.status;x.status=s;x.updatedAt=new Date().toLocaleString("ja-JP");saveApps(a);if(old!==s)notifyUser(x.user,"申請結果","申請ステータス変更","「"+x.type+"」が「"+s+"」になりました。");renderAdmin();renderMine();}}
+function saveNote(id){const a=getApps(),x=a.find(v=>v.id===id);if(x){x.adminNote=$("note"+id).value;x.updatedAt=new Date().toLocaleString("ja-JP");saveApps(a);notifyUser(x.user,"運営","運営からのメッセージ",x.adminNote||"運営から連絡があります。");renderAdmin();renderMine();alert("運営からの連絡を保存しました。")}}
+function deleteApp(id){if(confirm("この申請を削除しますか？")){saveApps(getApps().filter(a=>a.id!==id));renderAdmin()}}
+
+/* ===== 追加機能 ===== */
+function getProfile(user){
+  const ps=JSON.parse(localStorage.getItem("jz_profiles")||"{}");
+  return ps[user]||{bio:"",icon:"",header:""};
+}
+function saveProfiles(ps){localStorage.setItem("jz_profiles",JSON.stringify(ps))}
+async function saveProfile(){
+  const u=currentUser(); if(!u)return;
+  const ps=JSON.parse(localStorage.getItem("jz_profiles")||"{}"), p=getProfile(u);
+  try{
+    const icon=$("profileIconFile")?.files?.[0], header=$("profileHeaderFile")?.files?.[0];
+    if(icon)p.icon=await readImage(icon);
+    if(header)p.header=await readImage(header);
+    p.bio=$("profileBioEdit").value.trim(); ps[u]=p;saveProfiles(ps);
+    $("profileSaveError").textContent="";alert("プロフィールを保存しました。");showProfile(u);
+  }catch(e){$("profileSaveError").textContent=e.message||"保存できませんでした。";}
+}
+function showProfile(username){
+  const u=getUsers().find(x=>x.username===username); if(!u)return;
+  const p=getProfile(username);
+  $("profileName").textContent="@"+username;
+  $("profileDiscord").textContent="Discord ID："+(u.discordId||"未登録");
+  $("profileBio").textContent=p.bio||"自己紹介はありません。";
+  $("profileHeader").style.backgroundImage=p.header?`url("${p.header}")`:"";
+  $("profileAvatar").src=p.icon||"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100%25' height='100%25' fill='%23333'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' fill='white' font-size='35'%3E%3F%3C/text%3E%3C/svg%3E";
+  const me=currentUser(), actions=$("profileActions"); actions.innerHTML="";
+  if(me && me!==username){
+    actions.innerHTML=`<button class="btn primary" onclick="quickFriend('${esc(username).replace(/'/g,"\\'")}')">🤝 フレンド申請</button>
+    <button class="btn" onclick="startDMFromProfile('${esc(username).replace(/'/g,"\\'")}')">✉ DM</button>`;
+  }
+  $("profileModal").style.display="flex";
+}
+function closeProfile(){$("profileModal").style.display="none"}
+function quickFriend(target){$("friendTarget").value=target;sendFriendRequest()}
+function startDMFromProfile(target){$("dmTarget").value=target;closeProfile();show("dm");openDM()}
+
+function getFriends(){return JSON.parse(localStorage.getItem("jz_friends")||"[]")}
+function saveFriends(x){localStorage.setItem("jz_friends",JSON.stringify(x))}
+function sendFriendRequest(){
+  const me=currentUser(),target=$("friendTarget").value.trim(),err=$("friendError");
+  err.textContent="";
+  if(!me){show("account");return}
+  if(!target||target===me){err.textContent="相手のユーザー名を確認してください。";return}
+  if(!getUsers().some(x=>x.username===target)){err.textContent="そのユーザーは存在しません。";return}
+  const f=getFriends();
+  if(f.some(x=>x.from===me&&x.to===target&&x.status==="pending")||f.some(x=>x.from===target&&x.to===me&&x.status==="accepted")){err.textContent="既に申請・登録されています。";return}
+  f.push({id:Date.now(),from:me,to:target,status:"pending",date:new Date().toLocaleString("ja-JP")});
+  saveFriends(f);notifyUser(target,"フレンド","フレンド申請","@"+me+" からフレンド申請が届きました。");renderFriends();alert("フレンド申請を送りました。");
+}
+function renderFriends(){
+  const me=currentUser(),area=$("friendsArea"),notice=$("friendsNotice"); if(!area)return;
+  area.style.display=me?"block":"none";notice.style.display=me?"none":"block";if(!me)return;
+  const f=getFriends(), incoming=f.filter(x=>x.to===me&&x.status==="pending");
+  $("friendRequests").innerHTML=incoming.length?incoming.map(x=>`<div class="friend-row"><span onclick="showProfile('${esc(x.from).replace(/'/g,"\\'")}')" style="cursor:pointer"><b>@${esc(x.from)}</b><div class="small-muted">${esc(x.date)}</div></span><span><button class="btn okbtn" onclick="acceptFriend(${x.id})">承認</button><button class="btn" onclick="rejectFriend(${x.id})">拒否</button></span></div>`).join(""):"<div class='empty'>申請はありません。</div>";
+  const friends=f.filter(x=>x.status==="accepted"&&(x.from===me||x.to===me)).map(x=>x.from===me?x.to:x.from);
+  $("friendList").innerHTML=friends.length?friends.map(n=>`<div class="friend-row"><span onclick="showProfile('${esc(n).replace(/'/g,"\\'")}')" style="cursor:pointer"><b>@${esc(n)}</b></span><span><button class="btn" onclick="startDMFromProfile('${esc(n).replace(/'/g,"\\'")}')">DM</button></span></div>`).join(""):"<div class='empty'>フレンドはいません。</div>";
+}
+function acceptFriend(id){const f=getFriends(),x=f.find(v=>v.id===id);if(!x)return;x.status="accepted";saveFriends(f);notifyUser(x.from,"フレンド","フレンド承認","@"+currentUser()+" が申請を承認しました。");renderFriends()}
+function rejectFriend(id){saveFriends(getFriends().filter(x=>x.id!==id));renderFriends()}
+
+function getDMs(){return JSON.parse(localStorage.getItem("jz_dms")||"[]")}
+function saveDMs(x){localStorage.setItem("jz_dms",JSON.stringify(x))}
+let activeDMUser="";
+function openDM(){
+ const me=currentUser(),target=$("dmTarget").value.trim();if(!me){show("account");return}
+ if(!target||target===me||!getUsers().some(x=>x.username===target)){alert("相手のユーザー名を確認してください。");return}
+ activeDMUser=target;$("dmBox").style.display="block";$("dmTitle").textContent="@"+target+" とのDM";renderDM();
+}
+function sendDM(){
+ const me=currentUser(),text=$("dmText").value.trim();if(!me||!activeDMUser||!text)return;
+ const d=getDMs();d.push({id:Date.now(),from:me,to:activeDMUser,text,date:new Date().toLocaleString("ja-JP")});saveDMs(d);notifyUser(activeDMUser,"DM","新しいメッセージ","@"+me+" からDMが届きました。");$("dmText").value="";renderDM();
+}
+function renderDM(){
+ const me=currentUser();if(!me||!activeDMUser)return;
+ const a=getDMs().filter(x=>(x.from===me&&x.to===activeDMUser)||(x.from===activeDMUser&&x.to===me));
+ $("dmMessages").innerHTML=a.length?a.map(x=>`<div class="dm-msg ${x.from===me?'me':''}"><b>@${esc(x.from)}</b><div>${esc(x.text)}</div><div class="small-muted">${esc(x.date)}</div></div>`).join(""):"<div class='empty'>メッセージはありません。</div>";
+ const box=$("dmMessages");box.scrollTop=box.scrollHeight;
+}
+function getMemos(){return JSON.parse(localStorage.getItem("jz_memos")||"[]")}
+function saveMemos(x){localStorage.setItem("jz_memos",JSON.stringify(x))}
+function saveMemo(){
+ const u=currentUser(),text=$("memoText").value.trim();if(!u||!text)return;
+ const a=getMemos();a.unshift({id:Date.now(),user:u,text,date:new Date().toLocaleString("ja-JP")});saveMemos(a);$("memoText").value="";renderMemos();
+}
+function renderMemos(){
+ const u=currentUser();if(!u)return;
+ const a=getMemos().filter(x=>x.user===u);
+ $("memoList").innerHTML=a.length?a.map(x=>`<div class="memo-row"><div><div class="small-muted">${esc(x.date)}</div><div class="content">${esc(x.text)}</div></div><button class="btn danger" onclick="deleteMemo(${x.id})">削除</button></div>`).join(""):"<div class='empty'>メモはありません。</div>";
+}
+function deleteMemo(id){saveMemos(getMemos().filter(x=>x.id!==id));renderMemos()}
+
+function getDeletionRequests(){return JSON.parse(localStorage.getItem("jz_deletion_requests")||"[]")}
+function saveDeletionRequests(x){localStorage.setItem("jz_deletion_requests",JSON.stringify(x))}
+function requestAccountDeletion(){
+ const u=currentUser();if(!u)return;
+ const a=getDeletionRequests();if(a.some(x=>x.user===u&&x.status==="審査待ち")){alert("既に削除申請を出しています。");return}
+ const reason=prompt("アカウントを削除する理由（任意）")||"";
+ a.push({id:Date.now(),user:u,reason,status:"審査待ち",date:new Date().toLocaleString("ja-JP")});saveDeletionRequests(a);
+ notifyUser(u,"アカウント","削除申請","アカウント削除申請を受け付けました。");alert("削除申請を送信しました。");
+}
+function renderAdminDeletionRequests(){
+ if(!isAdmin())return;const box=$("adminDeletionRequests");if(!box)return;
+ const a=getDeletionRequests();
+ box.innerHTML=a.length?a.map(x=>`<div class="item"><b>@${esc(x.user)}</b> <span class="pill">${esc(x.status)}</span><div class="meta">${esc(x.date)}</div><div class="content">${esc(x.reason||"理由なし")}</div><div class="toolbar"><button class="btn okbtn" onclick="processDeletion(${x.id},true)">削除する</button><button class="btn" onclick="processDeletion(${x.id},false)">削除しない</button></div></div>`).join(""):"<div class='empty'>削除申請はありません。</div>";
+}
+function processDeletion(id,yes){
+ if(!isAdmin())return;const a=getDeletionRequests(),x=a.find(v=>v.id===id);if(!x)return;
+ if(yes){saveUsers(getUsers().filter(u=>u.username!==x.user));saveApps(getApps().filter(v=>v.user!==x.user));x.status="削除済み";notifyUser(x.user,"アカウント","削除処理","アカウントが削除されました。");}
+ else{x.status="却下";notifyUser(x.user,"アカウント","削除申請","アカウント削除申請は却下されました。")}
+ x.updatedAt=new Date().toLocaleString("ja-JP");saveDeletionRequests(a);renderAdminDeletionRequests();renderAdminAccounts();
+}
+
+function initProfileEditor(){
+ const u=currentUser();if(!u)return;const p=getProfile(u);
+ if($("profileBioEdit"))$("profileBioEdit").value=p.bio||"";
+}
+function serverClockInit(){
+ const key="jz_clock_cfg",cfg=JSON.parse(localStorage.getItem(key)||"{}");
+ if(cfg.baseReal===undefined){
+   cfg.baseReal=Date.now();cfg.baseGame=cfg.baseGame||Date.now();cfg.daysPerRealDay=cfg.daysPerRealDay||14;
+   localStorage.setItem(key,JSON.stringify(cfg));
+ }
+ window.setGameClock=function(){
+   const c=JSON.parse(localStorage.getItem(key)||"{}");
+   const days=(Date.now()-c.baseReal)/86400000*(Number(c.daysPerRealDay)||14);
+   const d=new Date(c.baseGame+days*86400000);
+   const el=$("serverDateDisplay");if(el)el.textContent=d.toLocaleString("ja-JP");
+ }
+ setInterval(window.setGameClock,1000);window.setGameClock();
+}
+serverClockInit();
+
+const _show=show;
+show=function(id){
+ _show(id);
+ if(id==="friends")renderFriends();
+ if(id==="dm"){const me=!!currentUser();$("dmArea").style.display=me?"block":"none";$("dmNotice").style.display=me?"none":"block";if(me)renderDM();}
+ if(id==="memo"){const me=!!currentUser();$("memoArea").style.display=me?"block":"none";$("memoNotice").style.display=me?"none":"block";if(me)renderMemos();}
+ if(id==="account")initProfileEditor();
+ if(id==="admin"&&isAdmin())renderAdminDeletionRequests();
+};
+
+const _renderAdmin=renderAdmin;
+renderAdmin=function(){_renderAdmin();if(isAdmin()){renderAdminDeletionRequests();renderAdminAccounts();}};
+const _renderAdminAccounts=renderAdminAccounts;
+renderAdminAccounts=function(){_renderAdminAccounts();};
+setInterval(()=>{if(currentUser()&&$("dm")?.classList.contains("active"))renderDM();if($("notifications")?.classList.contains("active"))renderNotifications();},3000);
+
+
+function loadServerClockAdmin(){
+ if(!isAdmin())return;
+ const c=JSON.parse(localStorage.getItem("jz_clock_cfg")||"{}");
+ if(!c.baseReal||!c.baseGame)return;
+ const d=new Date(c.baseGame);
+ if($("adminGameDate"))$("adminGameDate").value=d.toISOString().slice(0,10);
+ if($("adminGameTime"))$("adminGameTime").value=d.toTimeString().slice(0,8);
+ if($("adminDaysPerDay"))$("adminDaysPerDay").value=Number(c.daysPerRealDay||14);
+}
+function saveServerClockAdmin(){
+ if(!isAdmin())return;
+ const ds=$("adminGameDate").value,ts=$("adminGameTime").value||"00:00:00";
+ const speed=Number($("adminDaysPerDay").value);
+ const err=$("adminClockError");err.textContent="";
+ if(!ds){err.textContent="サーバー日付を入力してください。";return}
+ if(!Number.isFinite(speed)||speed<0){err.textContent="進行速度は0以上の数値にしてください。";return}
+ const baseGame=new Date(ds+"T"+ts);
+ if(Number.isNaN(baseGame.getTime())){err.textContent="日付または時刻が正しくありません。";return}
+ const c=JSON.parse(localStorage.getItem("jz_clock_cfg")||"{}");
+ c.baseReal=Date.now();c.baseGame=baseGame.getTime();c.daysPerRealDay=speed;
+ localStorage.setItem("jz_clock_cfg",JSON.stringify(c));
+ if(window.setGameClock)window.setGameClock();
+ alert("サーバー日付を変更しました。");
+}
+function resetServerClockNow(){
+ if(!isAdmin())return;
+ const c=JSON.parse(localStorage.getItem("jz_clock_cfg")||"{}");
+ c.baseReal=Date.now();c.baseGame=Date.now();c.daysPerRealDay=Number(c.daysPerRealDay||14);
+ localStorage.setItem("jz_clock_cfg",JSON.stringify(c));
+ loadServerClockAdmin();if(window.setGameClock)window.setGameClock();
+}
+const _show2=show;
+show=function(id){
+ _show2(id);
+ if(id==="admin"&&isAdmin())setTimeout(loadServerClockAdmin,0);
+};
+
+</script>
+
+<style>
+.profile-link{cursor:pointer;text-decoration:underline}.profile-modal{position:fixed;inset:0;background:#000b;z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}.profile-modal.open{display:flex}.profile-box{width:min(620px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:16px}.profile-cover{height:150px;background:#252531 center/cover no-repeat}.profile-main{padding:18px}.profile-avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;background:#333;border:4px solid var(--panel);margin-top:-55px}.profile-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.dm-msg{padding:9px 11px;background:#24242d;border-radius:10px;margin:6px 0;max-width:85%}.dm-msg.me{margin-left:auto;background:#304071}
+</style>
+<div id="profileModal" class="profile-modal" onclick="closeProfile(event)"><div class="profile-box" onclick="event.stopPropagation()"><div id="profileCover" class="profile-cover"></div><div class="profile-main"><img id="profileAvatar" class="profile-avatar" alt="" style="display:none"><h2 id="profileName"></h2><div id="profileUser" class="meta"></div><div id="profileBio" class="content"></div><div class="profile-actions"><button class="btn primary" id="profileFriendBtn">フレンド申請</button><button class="btn" onclick="profileDM()">✉️ DM</button><button class="btn" onclick="closeProfile()">閉じる</button></div></div></div></div>
+<script>
+function profiles(){return JSON.parse(localStorage.getItem('jz_profiles')||'{}')}
+function saveProfiles(x){localStorage.setItem('jz_profiles',JSON.stringify(x))}
+function friends(){return JSON.parse(localStorage.getItem('jz_friends')||'[]')}
+function saveFriends(x){localStorage.setItem('jz_friends',JSON.stringify(x))}
+function dms(){return JSON.parse(localStorage.getItem('jz_dms')||'[]')}
+function saveDMs(x){localStorage.setItem('jz_dms',JSON.stringify(x))}
+function profileOf(u){let p=profiles();if(!p[u]){p[u]={name:u,bio:'',avatar:'',header:''};saveProfiles(p)}return p[u]}
+function openProfile(u){let user=getUsers().find(x=>x.username===u);if(!user)return alert('ユーザーが見つかりません');let p=profileOf(u);$('profileName').textContent=p.name||u;$('profileUser').textContent='@'+u+' ｜ Discord ID：'+(user.discordId||'未登録');$('profileBio').textContent=p.bio||'自己紹介はありません。';$('profileCover').style.backgroundImage=p.header?'url("'+p.header+'")':'none';let av=$('profileAvatar');av.style.display=p.avatar?'block':'none';if(p.avatar)av.src=p.avatar;let me=currentUser(),b=$('profileFriendBtn');b.disabled=me===u;if(me!==u){let f=friendState(me,u);b.textContent=f==='friends'?'フレンド解除':f==='incoming'?'承認する':f==='outgoing'?'申請中':'フレンド申請';b.onclick=()=>friendAction(me,u)}window._profile=u;$('profileModal').classList.add('open')}
+function closeProfile(e){if(!e||e.target===$('profileModal'))$('profileModal').classList.remove('open')}
+function friendState(a,b){if(!a||!b)return'none';let f=friends();let x=f.find(v=>v.from===a&&v.to===b),y=f.find(v=>v.from===b&&v.to===a);if(x?.status==='accepted'||y?.status==='accepted')return'friends';if(x?.status==='pending')return'outgoing';if(y?.status==='pending')return'incoming';return'none'}
+function friendAction(a,b){let f=friends(),s=friendState(a,b);if(s==='none'){f.push({id:Date.now(),from:a,to:b,status:'pending'});saveFriends(f);notifyUser(b,'フレンド','フレンド申請','@'+a+' からフレンド申請が届きました。')}else if(s==='incoming'){let x=f.find(v=>v.from===b&&v.to===a&&v.status==='pending');if(x)x.status='accepted';f.push({id:Date.now()+1,from:a,to:b,status:'accepted'});saveFriends(f);notifyUser(b,'フレンド','承認','@'+a+' がフレンド申請を承認しました。')}else if(s==='friends'){saveFriends(f.filter(v=>!((v.from===a&&v.to===b)||(v.from===b&&v.to===a))))}openProfile(b)}
+function profileDM(){let u=window._profile;closeProfile();if(u){show('dm');window._dmTarget=u;renderDMPanel()}}
+function renderDMPanel(){let me=currentUser(),other=window._dmTarget;if(!me)return;let box=$('dmPanel');if(!box)return;let m=dms().filter(x=>(x.from===me&&x.to===other)||(x.from===other&&x.to===me));box.innerHTML='<div class="meta">@'+esc(other)+'</div><div style="max-height:350px;overflow:auto">'+(m.length?m.map(x=>'<div class="dm-msg '+(x.from===me?'me':'')+'"><b>@'+esc(x.from)+'</b><div>'+esc(x.text)+'</div><span class="meta">'+esc(x.date)+'</span></div>').join(''):'<div class="empty">まだメッセージはありません。</div>')+'</div><textarea id="dmInput" placeholder="メッセージ"></textarea><button class="btn primary" style="margin-top:8px" onclick="sendDM2()">送信</button>'}
+function sendDM2(){let me=currentUser(),to=window._dmTarget,t=$('dmInput').value.trim();if(!me||!to||!t)return;let x=dms();x.push({id:Date.now(),from:me,to,text:t,date:new Date().toLocaleString('ja-JP')});saveDMs(x);notifyUser(to,'DM','新しいDM','@'+me+' からDMが届きました。');renderDMPanel()}
+function openUserFromText(u){openProfile(u)}
+// Make every visible @username in board/admin account lists clickable without changing existing render code.
+document.addEventListener('click',function(e){let el=e.target;if(el.tagName==='B'&&el.textContent.trim().startsWith('@')){let u=el.textContent.trim().slice(1);if(getUsers().some(x=>x.username===u))openProfile(u)}});
+// Add a DM panel to the existing DM section when it exists.
+(function(){let s=document.getElementById('dm');if(s&&!document.getElementById('dmPanel')){let d=document.createElement('div');d.className='card';d.style.marginTop='12px';d.innerHTML='<h3>✉️ ダイレクトメッセージ</h3><div id="dmPanel"><div class="empty">プロフィールからDMを開いてください。</div></div>';s.appendChild(d)}})();
+</script>
+</body>
+</html>
